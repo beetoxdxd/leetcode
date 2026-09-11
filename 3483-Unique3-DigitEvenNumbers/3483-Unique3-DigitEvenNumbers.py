@@ -1,17 +1,19 @@
-# Last updated: 10/9/2026, 10:31:15 p.m.
+# Last updated: 10/9/2026, 10:54:33 p.m.
 1class Solution:
 2    def totalNumbers(self, digits: List[int]) -> int:
-3        even_numbers = set()
-4        n = len(digits)
+3        cont = Counter(digits)
+4        ans = 0
 5
-6        def traverse(num: int, index: list) -> None:
-7            if len(str(num)) == 3: 
-8                if num % 2 == 0: even_numbers.add(num)
-9                return
-10
-11            for i in range(n):
-12                if i in index: continue
-13                traverse(num*10 + digits[i], index + [i])
-14
-15        traverse(0, [])
-16        return len(even_numbers)
+6        for num in range(100, 1000, 2):
+7            h = defaultdict(int)
+8            while num > 0:
+9                h[num % 10] += 1
+10                num //= 10
+11
+12            flag = True
+13            for key, value in h.items():
+14                if value > cont[key]: flag = False
+15
+16            if flag: ans += 1
+17
+18        return ans
