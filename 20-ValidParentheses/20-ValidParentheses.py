@@ -1,13 +1,15 @@
-# Last updated: 1/8/2026, 5:29:11 p.m.
-class Solution:
-    def isValid(self, s: str) -> bool:
-        stack = []
-        opening = ['(', '[', '{']
-        closing = [')', ']', '}']
-
-        for char in s:
-            if char in opening: stack.append(char)
-            elif not stack: return False
-            elif opening.index(stack.pop()) != closing.index(char): return False
-
-        return False if stack else True
+# Last updated: 30/9/2026, 10:57:08 p.m.
+1class Solution:
+2    def isValid(self, s: str) -> bool:
+3        stack = []
+4
+5        for char in s:
+6            if char in '([{': stack.append(char)
+7            else:
+8                if not stack: return False
+9                x = stack.pop()
+10                if x == '(' and char != ')': return False
+11                if x == '[' and char != ']': return False
+12                if x == '{' and char != '}': return False
+13
+14        return False if stack else True
