@@ -1,15 +1,15 @@
-# Last updated: 1/8/2026, 5:29:07 p.m.
-class Solution:
-    def generateParenthesis(self, n: int) -> List[str]:
-        solutions = []
-
-        def generation(num: int, balance: int, comb: str) -> None:
-            if balance < 0: return
-            if num == 0: 
-                solutions.append(comb + ')'*balance)
-                return
-            generation(num-1, balance+1, comb + '(')
-            generation(num, balance-1, comb + ')')
-            
-        generation(n, 0, '')
-        return solutions
+# Last updated: 1/10/2026, 6:08:59 p.m.
+1class Solution:
+2    def generateParenthesis(self, n: int) -> List[str]:
+3        solutions = []
+4
+5        def generation(num: int, balance: int, comb: str) -> None:
+6            if balance < 0: return
+7            if num == 0: 
+8                solutions.append(comb + ')'*balance)
+9                return
+10            generation(num-1, balance+1, comb + '(')
+11            generation(num, balance-1, comb + ')')
+12            
+13        generation(n, 0, '')
+14        return solutions
