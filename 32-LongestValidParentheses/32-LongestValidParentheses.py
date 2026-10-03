@@ -1,17 +1,18 @@
-# Last updated: 1/8/2026, 5:28:49 p.m.
-class Solution:
-    def longestValidParentheses(self, s: str) -> int:
-        n = len(s)
-        dp = [0]*(n+1)
-        stack = []
-        ans = 0
-
-        for i in range(n):
-            if s[i] == '(': stack.append(i)
-            elif stack:
-                index = stack.pop()
-                cont = 2 + dp[i] + dp[index]
-                dp[i+1] = cont
-                if dp[i+1] > ans: ans = dp[i+1]
-        
-        return ans
+# Last updated: 3/10/2026, 4:38:38 p.m.
+1class Solution:
+2    def longestValidParentheses(self, s: str) -> int:
+3        res = 0
+4        st = [-1]
+5        
+6        for i, c in enumerate(s):
+7            if c == '(':
+8                st.append(i)
+9            else:
+10                st.pop()
+11                
+12                if not st:
+13                    st.append(i)
+14                else:
+15                    res = max(res, i - st[-1])
+16                    
+17        return res
