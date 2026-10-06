@@ -1,13 +1,12 @@
-# Last updated: 5/10/2026, 11:33:29 p.m.
+# Last updated: 5/10/2026, 11:34:51 p.m.
 1class Solution:
 2    def minAddToMakeValid(self, s: str) -> int:
-3        stack = []
+3        stack = 0
 4        cont = 0
 5
 6        for i, char in enumerate(s):
-7            if char == '(': stack.append(i)
-8            else:
-9                if stack: stack.pop()
-10                else: cont += 1
-11
-12        return cont + len(stack)
+7            if char == '(': stack += 1
+8            elif stack: stack -= 1
+9            else: cont += 1
+10
+11        return cont + stack
