@@ -1,11 +1,13 @@
-# Last updated: 1/11/2026, 1:26:45 a.m.
+# Last updated: 1/11/2026, 1:27:13 a.m.
 1class Solution:
 2    def minMoves(self, nums: list[int]) -> int:
-3        mn = min(nums)
-4        ans = 0
+3        mn, mx = min(nums), max(nums)
+4        if mn == mx: return 0
 5
-6        for num in nums:
-7            if mn != num: 
-8                ans += num - mn
-9
-10        return ans
+6        ans = 0
+7
+8        for num in nums:
+9            if mn != num: 
+10                ans += num - mn
+11
+12        return ans
