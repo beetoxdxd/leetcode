@@ -1,4 +1,4 @@
-# Last updated: 1/11/2026, 1:20:15 a.m.
+# Last updated: 1/11/2026, 1:26:45 a.m.
 1class Solution:
 2    def minMoves(self, nums: list[int]) -> int:
 3        mn = min(nums)
